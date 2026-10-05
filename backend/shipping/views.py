@@ -29,11 +29,11 @@ class PickupPointView(generics.ListAPIView):
     queryset = PickupPoint.objects.all()
     serializer_class = PickupPointSerializer
 
-@api_view({'POST'})
+@api_view(['POST'])
 def calculate_shipping(request):
     # POST /api/calculate-shipping/
     user_lat = request.data.get('user_lat')
-    user_lng = request.data.get('user_long')
+    user_lng = request.data.get('user_lng')
     point_id = request.data.get('point_id')
 
     # Валидация
@@ -55,8 +55,10 @@ def calculate_shipping(request):
     
     # Вычисляем расстояние
     distanc_km = calculate_haversine_distance(
-        lat1=float(user_lat), lon1=float(user_lng),
-        lat2=point.latitude, lon2=point.longitude
+        lat1=float(user_lat), 
+        lon1=float(user_lng),
+        lat2=point.latitude, 
+        lon2=point.longitude
     )
 
     # Расчет итоговой цены
