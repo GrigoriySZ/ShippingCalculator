@@ -43,7 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'corseheaders.middleware.CorseMiddleware',  # ОПЯЗАТЕЛЬНО ПЕРВЫМ!
+    'corsheaders.middleware.CorsMiddleware',  # ОПЯЗАТЕЛЬНО ПЕРВЫМ!
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -131,4 +131,6 @@ MAILERS = {
 }
 
 # Допускаем запросы со всех источников
-CORS_ALLOW_ALL_ORIGIN = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"]
